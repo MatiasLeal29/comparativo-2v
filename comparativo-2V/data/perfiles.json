@@ -1,0 +1,42 @@
+{
+  "candidatos": [
+    {
+      "nombre": "Jeannette Jara",
+      "foto": "./assets/jara.jpg",
+      "biografia": "Abogada, académica y ex Ministra del Trabajo y Previsión Social. Posee una sólida trayectoria en políticas públicas, administración estatal, negociación colectiva y protección social. Ha ejercido cargos de liderazgo en instituciones públicas y universitarias, destacándose en la elaboración e implementación de agendas de derechos laborales y reformas estructurales.",
+      "hitos": [
+        {
+          "titulo": "Reforma de Pensiones",
+          "descripcion": "Lideró la propuesta de un sistema mixto con mayor solidaridad, fortaleciendo pilares contributivos y no contributivos."
+        },
+        {
+          "titulo": "Ley de 40 Horas",
+          "descripcion": "Encabezó la reducción de la jornada laboral de 45 a 40 horas semanales, una de las reformas laborales más relevantes del país."
+        },
+        {
+          "titulo": "Fortalecimiento del Estado Social",
+          "descripcion": "Impulsó políticas orientadas a la consolidación de un sistema de seguridad social robusto y con mayor equidad."
+        }
+      ]
+    },
+    {
+      "nombre": "José Antonio Kast",
+      "foto": "./assets/kast.jpg",
+      "biografia": "Abogado, ex diputado y fundador del Partido Republicano. Con más de dos décadas de trayectoria política, ha participado en procesos legislativos relevantes, especialmente en materias de seguridad pública, economía, libertad de enseñanza y modernización del Estado. Ha liderado proyectos políticos de alcance nacional, consolidando un espacio propio dentro del espectro político chileno.",
+      "hitos": [
+        {
+          "titulo": "Agenda de Seguridad",
+          "descripcion": "Ha impulsado políticas de endurecimiento penal, fortalecimiento policial y medidas para recuperar el control territorial."
+        },
+        {
+          "titulo": "Capitalización Individual",
+          "descripcion": "Defensor del sistema de AFP y de un modelo basado en el ahorro personal como eje del sistema previsional."
+        },
+        {
+          "titulo": "Liderazgo en Movimiento Republicano",
+          "descripcion": "Fundador y principal referente nacional del Partido Republicano, consolidando una fuerza política con representación parlamentaria."
+        }
+      ]
+    }
+  ]
+}

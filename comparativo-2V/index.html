@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Comparativo Presidencial</title>
+
+  <!-- Roboto -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="light">
+
+  <!-- ===== Topbar ===== -->
+  <header class="topbar">
+    <div class="logo">Comparativo 2025</div>
+    
+    <nav class="menu">
+      <button onclick="showTab('perfil')">Perfil Profesional</button>
+      <button onclick="showTab('comparativa')">Comparativa</button>
+      <button onclick="showTab('resultados')">Resultados</button>
+    </nav>
+
+    <button id="themeToggle" class="theme-btn">🌙</button>
+  </header>
+
+  <!-- ===== SECCIONES ===== -->
+
+  <!-- === PERFIL PROFESIONAL === -->
+  <section id="perfil" class="tab-section">
+    <h2>Perfil Profesional</h2>
+
+    <div id="perfil-container" class="perfil-grid"></div>
+  </section>
+
+  <!-- === COMPARATIVA (CON SELECTOR) === -->
+  <section id="comparativa" class="tab-section" style="display:none;">
+    <h2>Comparativa por Temática</h2>
+
+    <!-- SELECTOR -->
+    <div class="selector-container">
+      <select id="tematicaSelect">
+        <option value="">Seleccione una temática...</option>
+      </select>
+    </div>
+
+    <!-- RESULTADOS -->
+    <div id="cardsTematica" class="cards-container"></div>
+  </section>
+
+  <!-- === RESULTADOS PRIMERA VUELTA === -->
+  <section id="resultados" class="tab-section" style="display:none;">
+    <h2>Resultados Primera Vuelta</h2>
+    
+    <div class="pie-chart-container">
+      <svg viewBox="0 0 32 32" class="pie">
+        <!-- Otros -->
+        <circle r="16" cx="16" cy="16"
+          style="stroke:#cfcfcf; stroke-dasharray:49.29 50.71;"></circle>
+
+        <!-- Jara -->
+        <circle r="16" cx="16" cy="16"
+          style="stroke:#f4a742; stroke-dasharray:26.75 73.25; transform:rotate(-177deg);"></circle>
+
+        <!-- Kast -->
+        <circle r="16" cx="16" cy="16"
+          style="stroke:#69b8ff; stroke-dasharray:23.96 76.04; transform:rotate(-273deg);"></circle>
+      </svg>
+
+      <div class="legend">
+        <div><span class="box jara"></span> Jara — 26.75%</div>
+        <div><span class="box kast"></span> Kast — 23.96%</div>
+        <div><span class="box otros"></span> Otros — 49.29%</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SCRIPTS ===== -->
+  <script>
+    /* ------------------- CAMBIO DE TABS ------------------- */
+    function showTab(tab) {
+      document.querySelectorAll('.tab-section').forEach(sec => sec.style.display = 'none');
+      document.getElementById(tab).style.display = 'block';
+    }
+
+    /* ------------------- MODO CLARO/OSCURO ------------------- */
+    const toggleBtn = document.getElementById("themeToggle");
+
+    toggleBtn.addEventListener("click", () => {
+      document.body.classList.toggle("dark");
+
+      toggleBtn.textContent = document.body.classList.contains("dark") 
+        ? "☀️" 
+        : "🌙";
+    });
+
+    /* ------------------- CARGAR PERFILES ------------------- */
+    fetch("./data/perfiles.json")
+      .then(res => res.json())
+      .then(data => {
+        const cont = document.getElementById("perfil-container");
+
+        data.candidatos.forEach(c => {
+          cont.innerHTML += `
+          <div class="perfil-card">
+            <img src="${c.foto}" class="perfil-foto" />
+            <h3>${c.nombre}</h3>
+            <p>${c.biografia}</p>
+            <ul>${c.hitos.map(h => `<li><strong>${h.titulo}:</strong> ${h.descripcion}</li>`).join("")}</ul>
+          </div>`;
+        });
+      });
+
+    /* ------------------- CARGAR COMPARATIVO CON SELECTOR ------------------- */
+    let comparativoData = [];
+
+    fetch("./data/comparativo.json")
+      .then(res => res.json())
+      .then(data => {
+        comparativoData = data;
+
+        const select = document.getElementById("tematicaSelect");
+        const tematicasUnicas = [...new Set(data.map(item => item.Tematica))];
+
+        tematicasUnicas.forEach(t => {
+          select.innerHTML += `<option value="${t}">${t}</option>`;
+        });
+
+        select.addEventListener("change", () => {
+          mostrarPorTematica(select.value);
+        });
+      });
+
+    function mostrarPorTematica(tematica) {
+      const cont = document.getElementById("cardsTematica");
+      cont.innerHTML = "";
+
+      if (tematica === "") {
+        cont.innerHTML = "<p style='text-align:center;'>Seleccione una temática para ver las propuestas.</p>";
+        return;
+      }
+
+      const filtrados = comparativoData.filter(item => item.Tematica === tematica);
+
+      filtrados.forEach(item => {
+        cont.innerHTML += `
+        <div class="card">
+          <h4>${item.Tematica}</h4>
+          <p><strong>${item.Candidato}:</strong> ${item.Propuesta}</p>
+          <a href="${item.LinkPrograma}" target="_blank" class="btn-link">Ver programa completo</a>
+        </div>`;
+      });
+    }
+  </script>
+
+</body>
+</html>
