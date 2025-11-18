@@ -1,23 +1,23 @@
 {
-  "total_validos": 12885928,
-  "candidatos": [
-    {
-      "nombre": "Jeannette Jara",
-      "votos": 3446854,
-      "porcentaje": 26.75,
-      "color": "#f4a742"
-    },
-    {
-      "nombre": "José Antonio Kast",
-      "votos": 3086963,
-      "porcentaje": 23.96,
-      "color": "#69b8ff"
-    },
-    {
-      "nombre": "Otros",
-      "votos": 6352111,
-      "porcentaje": 49.29,
-      "color": "#cfcfcf"
-    }
-  ]
+  "nacional": {
+    "total_votos": 8059386,
+    "participacion": "57.2%",
+    "detalle": [
+      {
+        "nombre": "Jeannette Jara",
+        "porcentaje": 26.75,
+        "votos": 2156492
+      },
+      {
+        "nombre": "José Antonio Kast",
+        "porcentaje": 23.96,
+        "votos": 1932000
+      },
+      {
+        "nombre": "Otros",
+        "porcentaje": 49.29,
+        "votos": 3970894
+      }
+    ]
+  }
 }

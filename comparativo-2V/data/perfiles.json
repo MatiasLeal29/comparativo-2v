@@ -3,38 +3,46 @@
     {
       "nombre": "Jeannette Jara",
       "foto": "./assets/jara.jpg",
-      "biografia": "Abogada, académica y ex Ministra del Trabajo y Previsión Social. Posee una sólida trayectoria en políticas públicas, administración estatal, negociación colectiva y protección social. Ha ejercido cargos de liderazgo en instituciones públicas y universitarias, destacándose en la elaboración e implementación de agendas de derechos laborales y reformas estructurales.",
+      "biografia": "Abogada, ex Ministra del Trabajo y Previsión Social y ex Subsecretaria de Previsión Social. Con una trayectoria vinculada a la defensa de derechos laborales, al fortalecimiento del Estado y a la modernización de la seguridad social. Ha sido dirigenta estudiantil, académica universitaria y dirigenta del sector público, destacándose en la elaboración y negociación de reformas estructurales.",
       "hitos": [
         {
-          "titulo": "Reforma de Pensiones",
-          "descripcion": "Lideró la propuesta de un sistema mixto con mayor solidaridad, fortaleciendo pilares contributivos y no contributivos."
+          "titulo": "Ministra del Trabajo (2022–2024)",
+          "descripcion": "Lideró reformas laborales clave, incluyendo la histórica Ley de 40 Horas y la propuesta de reforma previsional."
         },
         {
-          "titulo": "Ley de 40 Horas",
-          "descripcion": "Encabezó la reducción de la jornada laboral de 45 a 40 horas semanales, una de las reformas laborales más relevantes del país."
+          "titulo": "Subsecretaria de Previsión Social (2016–2018)",
+          "descripcion": "Promovió el fortalecimiento del Pilar Solidario y mejoras al sistema de pensiones durante el gobierno de Michelle Bachelet."
         },
         {
-          "titulo": "Fortalecimiento del Estado Social",
-          "descripcion": "Impulsó políticas orientadas a la consolidación de un sistema de seguridad social robusto y con mayor equidad."
+          "titulo": "Dirigenta ANEF y negociadora del sector público",
+          "descripcion": "Participó en negociaciones nacionales de reajustes salariales y políticas laborales para trabajadores del Estado."
+        },
+        {
+          "titulo": "Presidenta FEUSACH",
+          "descripcion": "Formó parte del movimiento estudiantil, impulsando la democratización universitaria e igualdad de oportunidades."
         }
       ]
     },
     {
       "nombre": "José Antonio Kast",
       "foto": "./assets/kast.jpg",
-      "biografia": "Abogado, ex diputado y fundador del Partido Republicano. Con más de dos décadas de trayectoria política, ha participado en procesos legislativos relevantes, especialmente en materias de seguridad pública, economía, libertad de enseñanza y modernización del Estado. Ha liderado proyectos políticos de alcance nacional, consolidando un espacio propio dentro del espectro político chileno.",
+      "biografia": "Abogado, ex diputado durante 16 años y fundador del Partido Republicano. Ha sido una figura influyente en la política nacional, con énfasis en seguridad, economía de mercado, libertad de enseñanza y modernización del Estado. Ha ejercido liderazgo legislativo y presidencial, consolidando una fuerza política de alcance nacional.",
       "hitos": [
         {
-          "titulo": "Agenda de Seguridad",
-          "descripcion": "Ha impulsado políticas de endurecimiento penal, fortalecimiento policial y medidas para recuperar el control territorial."
+          "titulo": "Diputado (2002–2018)",
+          "descripcion": "Representó al Distrito 30 y luego al Distrito 24 durante cuatro períodos consecutivos en la Cámara de Diputados."
         },
         {
-          "titulo": "Capitalización Individual",
-          "descripcion": "Defensor del sistema de AFP y de un modelo basado en el ahorro personal como eje del sistema previsional."
+          "titulo": "Fundador del Partido Republicano (2019)",
+          "descripcion": "Creó y lidera una de las fuerzas emergentes más influyentes en el escenario político chileno."
         },
         {
-          "titulo": "Liderazgo en Movimiento Republicano",
-          "descripcion": "Fundador y principal referente nacional del Partido Republicano, consolidando una fuerza política con representación parlamentaria."
+          "titulo": "Presidente de la Comisión de Constitución",
+          "descripcion": "Participó activamente en materias legales y de orden público en una de las comisiones más relevantes del Congreso."
+        },
+        {
+          "titulo": "Candidato presidencial 2017 y 2021",
+          "descripcion": "Obtuvo un 44% en segunda vuelta en 2021, consolidándose como líder político nacional."
         }
       ]
     }
