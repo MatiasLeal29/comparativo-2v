@@ -18,7 +18,7 @@
     <div class="logo">📊 Dashboard Electoral 2025</div>
 
     <nav class="menu">
-      <button onclick="showTab('perfil')" class="tab-btn">Perfil</button>
+      <button onclick="showTab('perfil')" class="tab-btn active">Perfil</button>
       <button onclick="showTab('comparativa')" class="tab-btn">Comparativa</button>
       <button onclick="showTab('resultados')" class="tab-btn">Resultados</button>
     </nav>
@@ -39,66 +39,66 @@
   <section id="comparativa" class="tab-section" style="display:none;">
     <h2>Comparativa por Temática</h2>
 
-    <!-- CARRUSEL DE TEMÁTICAS -->
-    <div class="tematicas-carousel" id="tematicasCarousel">
-      <!-- Se rellena dinámicamente -->
-    </div>
+    <div class="tematicas-carousel" id="tematicasCarousel"></div>
 
-    <!-- CONTENEDOR DE PROPUESTAS -->
     <div id="cardsTematica" class="cards-container"></div>
   </section>
 
-  <!-- === RESULTADOS PRIMERA VUELTA === -->
+  <!-- === RESULTADOS === -->
   <section id="resultados" class="tab-section" style="display:none;">
     <h2>Resultados Primera Vuelta</h2>
 
-    <div class="pie-chart-container">
-      <svg viewBox="0 0 32 32" class="pie animate-pie">
-        <!-- Otros -->
-        <circle r="16" cx="16" cy="16"
-          style="stroke:#cfcfcf; stroke-dasharray:49.29 50.71;"></circle>
+    <div class="bar-chart-container">
 
-        <!-- Jara -->
-        <circle r="16" cx="16" cy="16"
-          style="stroke:#f4a742; stroke-dasharray:26.75 73.25; transform:rotate(-177deg);"></circle>
-
-        <!-- Kast -->
-        <circle r="16" cx="16" cy="16"
-          style="stroke:#69b8ff; stroke-dasharray:23.96 76.04; transform:rotate(-273deg);"></circle>
-      </svg>
-
-      <div class="legend">
-        <div><span class="box jara"></span> Jara — 26.75%</div>
-        <div><span class="box kast"></span> Kast — 23.96%</div>
-        <div><span class="box otros"></span> Otros — 49.29%</div>
+      <!-- JARA -->
+      <div class="bar-row">
+        <span class="bar-label">Jeannette Jara</span>
+        <div class="bar-track">
+          <div class="bar-fill jara" style="--w: 26.75%;"></div>
+        </div>
+        <span class="bar-value">26.75% • 2.156.492 votos</span>
       </div>
+
+      <!-- KAST -->
+      <div class="bar-row">
+        <span class="bar-label">José Antonio Kast</span>
+        <div class="bar-track">
+          <div class="bar-fill kast" style="--w: 23.96%;"></div>
+        </div>
+        <span class="bar-value">23.96% • 1.932.000 votos</span>
+      </div>
+
+      <!-- OTROS -->
+      <div class="bar-row">
+        <span class="bar-label">Otros Candidatos</span>
+        <div class="bar-track">
+          <div class="bar-fill otros" style="--w: 49.29%;"></div>
+        </div>
+        <span class="bar-value">49.29% • 3.970.894 votos</span>
+      </div>
+
     </div>
   </section>
 
   <!-- ===== SCRIPTS ===== -->
   <script>
-    /* ------------------- CAMBIO DE TABS ------------------- */
+    /* ------------------- TAB SWITCH ------------------- */
     function showTab(tab) {
       document.querySelectorAll('.tab-section').forEach(sec => sec.style.display = 'none');
       document.getElementById(tab).style.display = 'block';
 
-      // marcar tab activa
-      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
       document.querySelector(`[onclick="showTab('${tab}')"]`).classList.add('active');
     }
 
-    /* ------------------- MODO CLARO/OSCURO ------------------- */
+    /* ------------------- DARK MODE ------------------- */
     const toggleBtn = document.getElementById("themeToggle");
-
     toggleBtn.addEventListener("click", () => {
       document.body.classList.toggle("dark");
-
-      toggleBtn.textContent = document.body.classList.contains("dark") 
-        ? "☀️" 
-        : "🌙";
+      toggleBtn.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
     });
 
-    /* ------------------- CARGAR PERFILES ------------------- */
+    /* ------------------- PERFILES ------------------- */
     fetch("./data/perfiles.json")
       .then(res => res.json())
       .then(data => {
@@ -108,7 +108,6 @@
           cont.innerHTML += `
           <div class="perfil-card">
             <div class="perfil-header">
-              <img src="${c.foto}" class="perfil-foto" />
               <h3>${c.nombre}</h3>
             </div>
 
@@ -117,7 +116,7 @@
             <ul class="hitos-list">
               ${c.hitos.map(h => `
                 <li>
-                  <span class="hito-titulo">• ${h.titulo}:</span>
+                  <span class="hito-titulo">${h.titulo}:</span>
                   <span class="hito-desc">${h.descripcion}</span>
                 </li>
               `).join("")}
@@ -126,7 +125,7 @@
         });
       });
 
-    /* ------------------- CARGAR COMPARATIVO ------------------- */
+    /* ------------------- COMPARATIVO ------------------- */
     let comparativoData = [];
 
     fetch("./data/comparativo.json")
@@ -135,24 +134,13 @@
         comparativoData = data;
 
         const carousel = document.getElementById("tematicasCarousel");
-
         const tematicasUnicas = [...new Set(data.map(item => item.Tematica))];
 
         const ICONS = {
-          "Economía": "📊",
-          "Seguridad": "🛡",
-          "Salud": "🏥",
-          "Pensiones": "💰",
-          "Educación": "🎓",
-          "Vivienda": "🏠",
-          "Transporte": "🚆",
-          "Energía": "⚡",
-          "Medio Ambiente": "🌿",
-          "Justicia": "⚖️",
-          "Relaciones Exteriores": "🌎",
-          "Cultura": "🎭",
-          "Digitalización / IA": "🤖",
-          "Empleo": "💼"
+          "Economía": "📊", "Seguridad": "🛡", "Salud": "🏥", "Pensiones": "💰",
+          "Educación": "🎓", "Vivienda": "🏠", "Transporte": "🚆", "Energía": "⚡",
+          "Medio Ambiente": "🌿", "Justicia": "⚖️", "Relaciones Exteriores": "🌎",
+          "Cultura": "🎭", "Digitalización / IA": "🤖", "Empleo": "💼"
         };
 
         tematicasUnicas.forEach(t => {
@@ -164,7 +152,7 @@
         });
       });
 
-    /* ------------------- MOSTRAR PROPUESTAS POR TEMÁTICA ------------------- */
+    /* ------------------- MOSTRAR POR TEMÁTICA ------------------- */
     function mostrarPorTematica(tematica, cardElement) {
       document.querySelectorAll(".tematica-card").forEach(el => el.classList.remove("active"));
       cardElement.classList.add("active");
