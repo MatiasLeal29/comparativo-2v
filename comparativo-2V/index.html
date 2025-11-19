@@ -13,17 +13,22 @@
 
 <body class="light">
 
-  <!-- ===== TOPBAR DASHBOARD ===== -->
+  <!-- ===== TOPBAR ===== -->
   <header class="topbar">
-    <div class="logo">📊 Dashboard Electoral 2025</div>
 
-    <nav class="menu">
+    <!-- Primera fila: Título + Darkmode -->
+    <div class="topbar-row">
+      <div class="logo">📊 Dashboard Electoral 2025</div>
+      <button id="themeToggle" class="theme-btn">🌙</button>
+    </div>
+
+    <!-- Segunda fila: menú -->
+    <nav class="menu-under-title">
       <button onclick="showTab('perfil')" class="tab-btn active">Perfil</button>
       <button onclick="showTab('comparativa')" class="tab-btn">Comparativa</button>
       <button onclick="showTab('resultados')" class="tab-btn">Resultados</button>
     </nav>
 
-    <button id="themeToggle" class="theme-btn">🌙</button>
   </header>
 
   <!-- ===== CONTENIDO ===== -->
@@ -31,7 +36,6 @@
   <!-- === PERFIL PROFESIONAL === -->
   <section id="perfil" class="tab-section">
     <h2>Perfil Profesional</h2>
-
     <div id="perfil-container" class="perfil-grid"></div>
   </section>
 
