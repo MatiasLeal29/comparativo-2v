@@ -156,14 +156,8 @@ body.dark {
   margin-bottom: 15px;
 }
 
-.perfil-foto {
-  width: 90px;
-  height: 90px;
-  border-radius: 12px;
-  object-fit: cover;
-}
-
 .perfil-bio {
+  text-align: justify;
   line-height: 1.6;
   margin-bottom: 20px;
   color: var(--text);
@@ -176,7 +170,9 @@ body.dark {
 }
 
 .hitos-list li {
+  text-align: justify;
   margin-bottom: 10px;
+  line-height: 1.5;
   color: var(--text);
 }
 
@@ -263,6 +259,11 @@ body.dark {
 .card h4 {
   color: var(--accent-2);
   margin-bottom: 10px;
+}
+
+.card p {
+  text-align: justify;
+  line-height: 1.6;
 }
 
 .btn-link {
